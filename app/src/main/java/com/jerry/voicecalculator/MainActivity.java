@@ -3,6 +3,7 @@ package com.jerry.voicecalculator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -44,7 +45,20 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == Rcognizer && resultCode == RESULT_OK){
             ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            speechText.setText(matches.get(0).toString());
+            //speechText.setText(matches.get(0).toString());
+            String operation = matches.get(0).toString();
+            StringCalculator stringCalculator = new StringCalculator();
+            try {
+                String result = stringCalculator.calculate(operation);
+                Log.d("manik", result);
+                speechText.setText(result);
+
+            }catch(
+                    RuntimeException e)
+            {
+                speechText.setText("wrong input");
+
+            }
         }
 
         super.onActivityResult(requestCode, resultCode, data);
