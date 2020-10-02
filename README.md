@@ -1,0 +1,3 @@
+# VoiceCalculator
+
+Something different. :)
