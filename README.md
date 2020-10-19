@@ -1,3 +1,3 @@
 # VoiceCalculator
 
-Something different. :)
+Its a voice text based calculator...!!
